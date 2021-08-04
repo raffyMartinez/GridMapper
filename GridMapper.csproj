@@ -1,0 +1,818 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39DAF75C-32B7-435B-ADC9-0F7413624593}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GridMapper</RootNamespace>
+    <AssemblyName>GridMapper</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>gm4.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="SharpKml.Core, Version=5.2.0.0, Culture=neutral, PublicKeyToken=9bb853c026a5c0ac, processorArchitecture=MSIL">
+      <HintPath>packages\SharpKml.Core.5.2.0\lib\net45\SharpKml.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="entities\Callback.cs" />
+    <Compile Include="entities\CategroyEventArgs.cs" />
+    <Compile Include="entities\ClassifiedItem.cs" />
+    <Compile Include="entities\Colors.cs" />
+    <Compile Include="entities\ColorSchemes.cs" />
+    <Compile Include="entities\Coordinate.cs" />
+    <Compile Include="entities\Enums.cs" />
+    <Compile Include="entities\extension.cs" />
+    <Compile Include="entities\ExtentDraggedBoxEventArgs.cs" />
+    <Compile Include="entities\FADColors.cs" />
+    <Compile Include="entities\FishingGrid.cs" />
+    <Compile Include="entities\FolderBrowserLauncher.cs" />
+    <Compile Include="entities\FrontAndReverseMapSpecs.cs" />
+    <Compile Include="entities\global.cs" />
+    <Compile Include="entities\Graticule.cs" />
+    <Compile Include="entities\Grid25GeographicDisplayHelper.cs" />
+    <Compile Include="entities\Grid25LabelManager.cs" />
+    <Compile Include="entities\Grid25LayoutHelper.cs" />
+    <Compile Include="entities\Grid25LayoutHelperEventArgs.cs" />
+    <Compile Include="entities\Grid25MajorGrid.cs" />
+    <Compile Include="entities\Grid25MinorGrid.cs" />
+    <Compile Include="entities\IslandNameHelper.cs" />
+    <Compile Include="entities\LabelProperty.cs" />
+    <Compile Include="entities\LatLngUTMConverter.cs" />
+    <Compile Include="entities\LayerEventArg.cs" />
+    <Compile Include="entities\LineWidthFix.cs" />
+    <Compile Include="entities\Logger.cs" />
+    <Compile Include="entities\MapInterActionHandler.cs" />
+    <Compile Include="entities\MapLayer.cs" />
+    <Compile Include="entities\MapLayershandler.cs" />
+    <Compile Include="entities\MapLayout.cs" />
+    <Compile Include="entities\MapTextGraticuleHelper.cs" />
+    <Compile Include="entities\PointLayerSymbologyHandler.cs" />
+    <Compile Include="entities\registrytools.cs" />
+    <Compile Include="entities\SaveMapImage.cs" />
+    <Compile Include="entities\SaveMapParameters.cs" />
+    <Compile Include="entities\ShapefileDiskStorageHelper.cs" />
+    <Compile Include="entities\ShapefileLabelHandler.cs" />
+    <Compile Include="entities\ShapefileLayerHelper.cs" />
+    <Compile Include="entities\TileProviderManager.cs" />
+    <Compile Include="entities\ToolStripEx.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="views\AboutGridMapperWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\AboutGridMapperWindow.Designer.cs">
+      <DependentUpon>AboutGridMapperWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\BatchExportMapSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\BatchExportMapSettingsForm.designer.cs">
+      <DependentUpon>BatchExportMapSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\ConvertToGrid25Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\ConvertToGrid25Form.designer.cs">
+      <DependentUpon>ConvertToGrid25Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\EditShapeAttributeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\EditShapeAttributeForm.designer.cs">
+      <DependentUpon>EditShapeAttributeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\GraticuleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\GraticuleForm.designer.cs">
+      <DependentUpon>GraticuleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\GraticuleTextHelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\GraticuleTextHelperForm.designer.cs">
+      <DependentUpon>GraticuleTextHelperForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Grid25CoordinateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Grid25CoordinateForm.designer.cs">
+      <DependentUpon>Grid25CoordinateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Grid25GeographicDisplayOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Grid25GeographicDisplayOptionsForm.designer.cs">
+      <DependentUpon>Grid25GeographicDisplayOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Grid25LayoutHelperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Grid25LayoutHelperForm.designer.cs">
+      <DependentUpon>Grid25LayoutHelperForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Grid25SubGridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Grid25SubGridForm.designer.cs">
+      <DependentUpon>Grid25SubGridForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\LabelCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\LabelCategoryForm.Designer.cs">
+      <DependentUpon>LabelCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\LabelCategroyForm_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\LabelCategroyForm_1.Designer.cs">
+      <DependentUpon>LabelCategroyForm_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\LabelsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\LabelsForm.designer.cs">
+      <DependentUpon>LabelsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\LayerPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\LayerPropertyForm.designer.cs">
+      <DependentUpon>LayerPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\MapLayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\MapLayersForm.designer.cs">
+      <DependentUpon>MapLayersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\PointLayerSymbologyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\PointLayerSymbologyForm.Designer.cs">
+      <DependentUpon>PointLayerSymbologyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\PolygonLineLayerSymbologyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\PolygonLineLayerSymbologyForm.designer.cs">
+      <DependentUpon>PolygonLineLayerSymbologyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\ReverseGridLabelsSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\ReverseGridLabelsSetupForm.designer.cs">
+      <DependentUpon>ReverseGridLabelsSetupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\SaveMapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\SaveMapForm.designer.cs">
+      <DependentUpon>SaveMapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\SelectTileProviderWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\SelectTileProviderWindow.Designer.cs">
+      <DependentUpon>SelectTileProviderWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\ShapefileAttributesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\ShapefileAttributesForm.designer.cs">
+      <DependentUpon>ShapefileAttributesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\UserControls\CharacterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\UserControls\FontComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="views\UserControls\ImageCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="views\UserControls\ListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\UserControls\ListControl.designer.cs">
+      <DependentUpon>ListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\UserControls\NumericUpDownExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="views\UserControls\NumericUpDownExt.designer.cs">
+      <DependentUpon>NumericUpDownExt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\UserControls\SymbolControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\UserControls\SymbolControl.designer.cs">
+      <DependentUpon>SymbolControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\UserControls\TransparencyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="views\UserControls\TransparencyControl.designer.cs">
+      <DependentUpon>TransparencyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\VisibilityQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\VisibilityQueryForm.designer.cs">
+      <DependentUpon>VisibilityQueryForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="views\AboutGridMapperWindow.resx">
+      <DependentUpon>AboutGridMapperWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\BatchExportMapSettingsForm.resx">
+      <DependentUpon>BatchExportMapSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\ConvertToGrid25Form.resx">
+      <DependentUpon>ConvertToGrid25Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\EditShapeAttributeForm.resx">
+      <DependentUpon>EditShapeAttributeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\GraticuleForm.resx">
+      <DependentUpon>GraticuleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\GraticuleTextHelperForm.resx">
+      <DependentUpon>GraticuleTextHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Grid25CoordinateForm.resx">
+      <DependentUpon>Grid25CoordinateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Grid25GeographicDisplayOptionsForm.resx">
+      <DependentUpon>Grid25GeographicDisplayOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Grid25LayoutHelperForm.resx">
+      <DependentUpon>Grid25LayoutHelperForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Grid25SubGridForm.resx">
+      <DependentUpon>Grid25SubGridForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\LabelCategoryForm.resx">
+      <DependentUpon>LabelCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\LabelCategroyForm_1.resx">
+      <DependentUpon>LabelCategroyForm_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\LabelsForm.resx">
+      <DependentUpon>LabelsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\LayerPropertyForm.resx">
+      <DependentUpon>LayerPropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\MapLayersForm.resx">
+      <DependentUpon>MapLayersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\PointLayerSymbologyForm.resx">
+      <DependentUpon>PointLayerSymbologyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\PolygonLineLayerSymbologyForm.resx">
+      <DependentUpon>PolygonLineLayerSymbologyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\ReverseGridLabelsSetupForm.resx">
+      <DependentUpon>ReverseGridLabelsSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\SaveMapForm.resx">
+      <DependentUpon>SaveMapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\SelectTileProviderWindow.resx">
+      <DependentUpon>SelectTileProviderWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\ShapefileAttributesForm.resx">
+      <DependentUpon>ShapefileAttributesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\UserControls\ListControl.resx">
+      <DependentUpon>ListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\UserControls\TransparencyControl.resx">
+      <DependentUpon>TransparencyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\VisibilityQueryForm.resx">
+      <DependentUpon>VisibilityQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MapWinGIS">
+      <Guid>{C368D713-CC5F-40ED-9F53-F84FE197B96A}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Rows2Columns_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actor_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actor_16xMD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actor_16xSM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_16xSM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_l.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddBehavior_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddFolder_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddFolder_16x1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply grid.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow32.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attrib.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BigProp.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLD.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_16x.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkLegend2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\choosePosition.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_all_selection.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_selection.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close document.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColumnChart_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CopyLongTextToClipboard_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\db.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-save.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_16xMD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExportToExcel_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish blue close28.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish blue document28.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish blue help28.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish blue map28.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish blue28.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish document.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish document2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish document3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish hook blue28.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish hook document.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish list.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish map document.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish report blue28.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fish2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fitScreen.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\graticule.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gridCursor.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help-browser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help document.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\History_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\im_boundary.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\im_clear.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\im_exit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\im_table.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imHook.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Import_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImportFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Impound.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imZoomPrev.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InsertSnippet_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\internet-web-browser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ITL.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jigs.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\label_add.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\label-.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\label+.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\landingSite.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Large_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layerAdd.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layerRemove.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout_icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LayoutTransform_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left arrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legend.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lev1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lev2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lev3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lev4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level01_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level02_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level03_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level04_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level05_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level06_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lines.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ListFolder_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapPreview.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapTileLayer_16x_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mbr.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medium_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\month.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\netMed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nets.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newAOI.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newLS.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OpenFileFromProject_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Others.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paddle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pan.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProcedureMissing_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProjectFolderOpen_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prop2a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prop2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prop1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Remove_16xSM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\removel_l.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report document.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right arrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ruler.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ruler_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ruler2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_16x.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seines.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\set layout.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings_12x_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SmallProp.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\system-file-manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Table_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aoi.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Team_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\traps.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UNDRLN.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VSO_AddUser_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VSO_NewFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xy point.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom-.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom+.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoomEntire.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoomSelection.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gm4.ico" />
+    <Content Include="Resources\apply format.bmp" />
+    <None Include="Resources\colorschemes.xml" />
+    <Content Include="Resources\subgrid.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Owf.Controls.Office2007ColorPicker\Owf.Controls.Office2007ColorPicker.csproj">
+      <Project>{f017c4cb-751d-4f5d-8a72-96a279135473}</Project>
+      <Name>Owf.Controls.Office2007ColorPicker</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
