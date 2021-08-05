@@ -91,7 +91,7 @@ namespace GridMapper.entities
                 }
 
                 bool showCreditsOnMap = _labelPropertiesDictionary["includeCredits"] == 1;
-                SetMapTitle(sfLabelPath.Extents, showCredits: false, showCitation: showCreditsOnMap);
+                SetMapTitle(sfLabelPath.Extents, shoSizeStatment: true, showCitation: showCreditsOnMap);
                 success = _shapeFileGrid25Labels.NumShapes > 0;
             }
 
@@ -324,7 +324,7 @@ namespace GridMapper.entities
         /// Places map title and footer
         /// </summary>
         /// <param name="minorGridExtent"></param>
-        private void SetMapTitle(Extents minorGridExtent, bool showZone = true, bool showCredits = true, bool showCitation = true)
+        private void SetMapTitle(Extents minorGridExtent, bool showZone = true, bool shoSizeStatment = true, bool showCitation = true)
         {
             //set up map title
             var shp = new Shape();
@@ -370,20 +370,21 @@ namespace GridMapper.entities
                 }
             }
 
-            if (showCredits)
+            if (shoSizeStatment)
             {
-                shp = new Shape();
-                if (shp.Create(ShpfileType.SHP_POINT))
+                var shpSizeStatement = new Shape();
+                if (shpSizeStatement.Create(ShpfileType.SHP_POINT))
                 {
-                    yPos = (2 - TitleDistanceFactor) * (minorGridExtent.yMin - 5000 - _labelDistance);
-                    if (shp.AddPoint(minorGridExtent.xMin, yPos) >= 0)
+                    //yPos = (2 - TitleDistanceFactor) * (minorGridExtent.yMin - 4000 - _labelDistance);
+                    yPos = shp.Point[0].y;
+                    if (shpSizeStatement.AddPoint(minorGridExtent.xMax, yPos) >= 0)
                     {
-                        var iShp = _shapeFileGrid25Labels.EditAddShape(shp);
+                        var iShp = _shapeFileGrid25Labels.EditAddShape(shpSizeStatement);
                         if (iShp >= 0)
                         {
                             _shapeFileGrid25Labels.EditCellValue(_iFldLocation, iShp, "MF");
                             _shapeFileGrid25Labels.EditCellValue(_iFLdLabel, iShp, MapFootnote);
-                            _shapeFileGrid25Labels.Labels.AddLabel(MapFootnote, shp.Point[0].x, shp.Point[0].y, 0, 8);
+                            _shapeFileGrid25Labels.Labels.AddLabel(MapFootnote, shpSizeStatement.Point[0].x, shpSizeStatement.Point[0].y, 0, 8);
                         }
                     }
                 }
@@ -402,7 +403,7 @@ namespace GridMapper.entities
                         {
                             _shapeFileGrid25Labels.EditCellValue(_iFldLocation, iShp, "CIT");
                             _shapeFileGrid25Labels.EditCellValue(_iFLdLabel, iShp, Citation);
-                            _shapeFileGrid25Labels.Labels.AddLabel(Citation, shp.Point[0].x, shp.Point[0].y, 0, 8);
+                            _shapeFileGrid25Labels.Labels.AddLabel(Citation, shp.Point[0].x, shp.Point[0].y, 0, 9);
                         }
                     }
                 }
@@ -445,8 +446,8 @@ namespace GridMapper.entities
                 _shapeFileGrid25Labels.EditAddField("Location", FieldType.STRING_FIELD, 1, 2);
                 _shapeFileGrid25Labels.EditAddField("Label", FieldType.STRING_FIELD, 1, 4);
                 _shapeFileGrid25Labels.GeoProjection = geoProjection;
-                MapFootnote = "This map has been made possible through the ECOFISH Project between DA-BFAR and USAID";
-                Citation = "Martinez R., Tajonera I.J.(2021) FAD Grid Mapper. https://github.com/raffyMartinez/faddotnet/releases";
+                MapFootnote = "Grid size is 2 x 2 kilometers";
+                Citation = "Martinez R., Tajonera I.J.(2021) FAD Grid Mapper. https://github.com/raffyMartinez/GridMapper/releases/tag/1";
             }
         }
 
@@ -521,7 +522,16 @@ namespace GridMapper.entities
                             //c.Expression = $@"[Location] =  ""MF""";
                             c.Expression = $@"[Location] =  ""{c.Name}""";
                             c.FontSize = (int)_labelPropertiesDictionary["footnoteSize"];
-                            c.Alignment = tkLabelAlignment.laBottomRight;
+                            
+
+                            if(c.Name=="MF")
+                            {
+                                c.Alignment = tkLabelAlignment.laCenterLeft;
+                            }
+                            else
+                            {
+                                c.Alignment = tkLabelAlignment.laBottomRight;
+                            }
                             break;
                     }
                 });

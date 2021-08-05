@@ -730,8 +730,8 @@ namespace GridMapper
             this.tsButtonFitMap.Image = global::GridMapper.Properties.Resources.fit;
             this.tsButtonFitMap.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonFitMap.Name = "tsButtonFitMap";
-            this.tsButtonFitMap.Size = new System.Drawing.Size(29, 28);
-            this.tsButtonFitMap.Text = "toolStripButton1";
+            this.tsButtonFitMap.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonFitMap.Text = "Fit grid to map";
             // 
             // tsButtonSaveShapefile
             // 
@@ -739,8 +739,8 @@ namespace GridMapper
             this.tsButtonSaveShapefile.Image = global::GridMapper.Properties.Resources.document_save;
             this.tsButtonSaveShapefile.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonSaveShapefile.Name = "tsButtonSaveShapefile";
-            this.tsButtonSaveShapefile.Size = new System.Drawing.Size(29, 28);
-            this.tsButtonSaveShapefile.Text = "toolStripButton1";
+            this.tsButtonSaveShapefile.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonSaveShapefile.Text = "Save grid to shapefile";
             // 
             // tsButtonSaveImage
             // 
@@ -748,8 +748,8 @@ namespace GridMapper
             this.tsButtonSaveImage.Image = global::GridMapper.Properties.Resources.image;
             this.tsButtonSaveImage.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonSaveImage.Name = "tsButtonSaveImage";
-            this.tsButtonSaveImage.Size = new System.Drawing.Size(29, 28);
-            this.tsButtonSaveImage.Text = "toolStripButton1";
+            this.tsButtonSaveImage.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonSaveImage.Text = "Save grid to image";
             // 
             // tsButtonMBRs
             // 
@@ -757,8 +757,8 @@ namespace GridMapper
             this.tsButtonMBRs.Image = global::GridMapper.Properties.Resources.mbr;
             this.tsButtonMBRs.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonMBRs.Name = "tsButtonMBRs";
-            this.tsButtonMBRs.Size = new System.Drawing.Size(29, 28);
-            this.tsButtonMBRs.Text = "toolStripButton1";
+            this.tsButtonMBRs.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonMBRs.Text = "Show MBRs";
             // 
             // tsButtonRetrieve
             // 
@@ -766,8 +766,8 @@ namespace GridMapper
             this.tsButtonRetrieve.Image = global::GridMapper.Properties.Resources.im_boundary;
             this.tsButtonRetrieve.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonRetrieve.Name = "tsButtonRetrieve";
-            this.tsButtonRetrieve.Size = new System.Drawing.Size(29, 28);
-            this.tsButtonRetrieve.Text = "toolStripButton1";
+            this.tsButtonRetrieve.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonRetrieve.Text = "Get grid boundaries";
             // 
             // tsButtonXY
             // 
@@ -775,8 +775,8 @@ namespace GridMapper
             this.tsButtonXY.Image = global::GridMapper.Properties.Resources.xy_point;
             this.tsButtonXY.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonXY.Name = "tsButtonXY";
-            this.tsButtonXY.Size = new System.Drawing.Size(29, 28);
-            this.tsButtonXY.Text = "toolStripButton2";
+            this.tsButtonXY.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonXY.Text = "Capture pointer x,y";
             // 
             // toolStripMain
             // 
@@ -819,21 +819,21 @@ namespace GridMapper
             this.tsButtonSaveState.Image = global::GridMapper.Properties.Resources.document_save;
             this.tsButtonSaveState.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsButtonSaveState.Name = "tsButtonSaveState";
-            this.tsButtonSaveState.Size = new System.Drawing.Size(34, 28);
+            this.tsButtonSaveState.Size = new System.Drawing.Size(34, 25);
             this.tsButtonSaveState.Text = "toolStripDropDownButton1";
             this.tsButtonSaveState.ToolTipText = "Save map state";
             // 
             // resetMapStateMenuItem
             // 
             this.resetMapStateMenuItem.Name = "resetMapStateMenuItem";
-            this.resetMapStateMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.resetMapStateMenuItem.Size = new System.Drawing.Size(128, 26);
             this.resetMapStateMenuItem.Text = "Reset";
             this.resetMapStateMenuItem.Click += new System.EventHandler(this.OnMenuItemSelected);
             // 
             // saveMapStateMenuItem
             // 
             this.saveMapStateMenuItem.Name = "saveMapStateMenuItem";
-            this.saveMapStateMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveMapStateMenuItem.Size = new System.Drawing.Size(128, 26);
             this.saveMapStateMenuItem.Text = "Save";
             this.saveMapStateMenuItem.Click += new System.EventHandler(this.OnMenuItemSelected);
             // 
@@ -843,7 +843,7 @@ namespace GridMapper
             this.tsButtonLayers.Image = global::GridMapper.Properties.Resources.layer;
             this.tsButtonLayers.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonLayers.Name = "tsButtonLayers";
-            this.tsButtonLayers.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonLayers.Size = new System.Drawing.Size(29, 25);
             this.tsButtonLayers.Text = "toolStripButton1";
             this.tsButtonLayers.ToolTipText = "Open layers form";
             // 
@@ -853,7 +853,7 @@ namespace GridMapper
             this.tsButtonLayerAdd.Image = global::GridMapper.Properties.Resources.layerAdd;
             this.tsButtonLayerAdd.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonLayerAdd.Name = "tsButtonLayerAdd";
-            this.tsButtonLayerAdd.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonLayerAdd.Size = new System.Drawing.Size(29, 25);
             this.tsButtonLayerAdd.Text = "toolStripButton1";
             this.tsButtonLayerAdd.ToolTipText = "Add layer";
             // 
@@ -863,7 +863,7 @@ namespace GridMapper
             this.tsButtonAttributes.Image = global::GridMapper.Properties.Resources.attrib;
             this.tsButtonAttributes.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonAttributes.Name = "tsButtonAttributes";
-            this.tsButtonAttributes.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonAttributes.Size = new System.Drawing.Size(29, 25);
             this.tsButtonAttributes.Text = "Open layer attributes";
             // 
             // tsButtonSelectTile
@@ -875,20 +875,20 @@ namespace GridMapper
             this.tsButtonSelectTile.Image = global::GridMapper.Properties.Resources._2Rows2Columns_16x;
             this.tsButtonSelectTile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsButtonSelectTile.Name = "tsButtonSelectTile";
-            this.tsButtonSelectTile.Size = new System.Drawing.Size(34, 28);
+            this.tsButtonSelectTile.Size = new System.Drawing.Size(34, 25);
             this.tsButtonSelectTile.Text = "Select map tiles";
             // 
             // noTileMenuItem
             // 
             this.noTileMenuItem.Name = "noTileMenuItem";
-            this.noTileMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.noTileMenuItem.Size = new System.Drawing.Size(143, 26);
             this.noTileMenuItem.Text = "No tiles";
             this.noTileMenuItem.Click += new System.EventHandler(this.OnMenuItemSelected);
             // 
             // selectTileMenuItem
             // 
             this.selectTileMenuItem.Name = "selectTileMenuItem";
-            this.selectTileMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.selectTileMenuItem.Size = new System.Drawing.Size(143, 26);
             this.selectTileMenuItem.Text = "Select...";
             this.selectTileMenuItem.Click += new System.EventHandler(this.OnMenuItemSelected);
             // 
@@ -898,7 +898,7 @@ namespace GridMapper
             this.tsButtonZoomIn.Image = global::GridMapper.Properties.Resources.zoom_plus;
             this.tsButtonZoomIn.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonZoomIn.Name = "tsButtonZoomIn";
-            this.tsButtonZoomIn.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonZoomIn.Size = new System.Drawing.Size(29, 25);
             this.tsButtonZoomIn.Text = "Zoom in";
             // 
             // tsButtonZoomOut
@@ -907,7 +907,7 @@ namespace GridMapper
             this.tsButtonZoomOut.Image = global::GridMapper.Properties.Resources.zoom_minus;
             this.tsButtonZoomOut.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonZoomOut.Name = "tsButtonZoomOut";
-            this.tsButtonZoomOut.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonZoomOut.Size = new System.Drawing.Size(29, 25);
             this.tsButtonZoomOut.Text = "Zoom out";
             // 
             // tsButtonZoomAll
@@ -916,7 +916,7 @@ namespace GridMapper
             this.tsButtonZoomAll.Image = global::GridMapper.Properties.Resources.zoomEntire;
             this.tsButtonZoomAll.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonZoomAll.Name = "tsButtonZoomAll";
-            this.tsButtonZoomAll.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonZoomAll.Size = new System.Drawing.Size(29, 25);
             this.tsButtonZoomAll.Text = "Zoom all";
             // 
             // tsButtonFitMap1
@@ -925,7 +925,7 @@ namespace GridMapper
             this.tsButtonFitMap1.Image = global::GridMapper.Properties.Resources.fitScreen;
             this.tsButtonFitMap1.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonFitMap1.Name = "tsButtonFitMap1";
-            this.tsButtonFitMap1.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonFitMap1.Size = new System.Drawing.Size(29, 25);
             this.tsButtonFitMap1.Text = "Fit to map";
             // 
             // tsButtonZoomPrevious
@@ -934,7 +934,7 @@ namespace GridMapper
             this.tsButtonZoomPrevious.Image = global::GridMapper.Properties.Resources.imZoomPrev;
             this.tsButtonZoomPrevious.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonZoomPrevious.Name = "tsButtonZoomPrevious";
-            this.tsButtonZoomPrevious.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonZoomPrevious.Size = new System.Drawing.Size(29, 25);
             this.tsButtonZoomPrevious.Text = "Zoom previous";
             // 
             // tsButtonPan
@@ -943,7 +943,7 @@ namespace GridMapper
             this.tsButtonPan.Image = global::GridMapper.Properties.Resources.pan;
             this.tsButtonPan.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonPan.Name = "tsButtonPan";
-            this.tsButtonPan.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonPan.Size = new System.Drawing.Size(29, 25);
             this.tsButtonPan.Text = "Pan";
             // 
             // tsButtonBlackArrow
@@ -952,7 +952,7 @@ namespace GridMapper
             this.tsButtonBlackArrow.Image = global::GridMapper.Properties.Resources.arrow;
             this.tsButtonBlackArrow.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonBlackArrow.Name = "tsButtonBlackArrow";
-            this.tsButtonBlackArrow.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonBlackArrow.Size = new System.Drawing.Size(29, 25);
             this.tsButtonBlackArrow.Text = "Select";
             // 
             // tsButtonMeasure
@@ -961,7 +961,7 @@ namespace GridMapper
             this.tsButtonMeasure.Image = global::GridMapper.Properties.Resources.ruler;
             this.tsButtonMeasure.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonMeasure.Name = "tsButtonMeasure";
-            this.tsButtonMeasure.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonMeasure.Size = new System.Drawing.Size(29, 25);
             this.tsButtonMeasure.Text = "Measure";
             // 
             // tsButtonClearSelection
@@ -970,7 +970,7 @@ namespace GridMapper
             this.tsButtonClearSelection.Image = global::GridMapper.Properties.Resources.clear_selection;
             this.tsButtonClearSelection.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonClearSelection.Name = "tsButtonClearSelection";
-            this.tsButtonClearSelection.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonClearSelection.Size = new System.Drawing.Size(29, 25);
             this.tsButtonClearSelection.Text = "Deselect from current layer";
             // 
             // tsButtonClearAllSelection
@@ -979,7 +979,7 @@ namespace GridMapper
             this.tsButtonClearAllSelection.Image = global::GridMapper.Properties.Resources.clear_all_selection;
             this.tsButtonClearAllSelection.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonClearAllSelection.Name = "tsButtonClearAllSelection";
-            this.tsButtonClearAllSelection.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonClearAllSelection.Size = new System.Drawing.Size(29, 25);
             this.tsButtonClearAllSelection.Text = "Deselect from all layers";
             // 
             // tsButtonGraticule
@@ -988,7 +988,7 @@ namespace GridMapper
             this.tsButtonGraticule.Image = global::GridMapper.Properties.Resources.graticule;
             this.tsButtonGraticule.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonGraticule.Name = "tsButtonGraticule";
-            this.tsButtonGraticule.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonGraticule.Size = new System.Drawing.Size(29, 25);
             this.tsButtonGraticule.Text = "Graticule";
             // 
             // tsButtonSaveImage1
@@ -997,7 +997,7 @@ namespace GridMapper
             this.tsButtonSaveImage1.Image = global::GridMapper.Properties.Resources.image;
             this.tsButtonSaveImage1.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonSaveImage1.Name = "tsButtonSaveImage1";
-            this.tsButtonSaveImage1.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonSaveImage1.Size = new System.Drawing.Size(29, 25);
             this.tsButtonSaveImage1.Text = "Save map to image";
             // 
             // tsCBO
@@ -1008,7 +1008,7 @@ namespace GridMapper
             "Grid UTM Zone 50",
             "Grid UTM Zone 51"});
             this.tsCBO.Name = "tsCBO";
-            this.tsCBO.Size = new System.Drawing.Size(121, 28);
+            this.tsCBO.Size = new System.Drawing.Size(140, 28);
             this.tsCBO.Text = "Mapping mode";
             this.tsCBO.SelectedIndexChanged += new System.EventHandler(this.OnCBOChange);
             // 
@@ -1018,7 +1018,7 @@ namespace GridMapper
             this.tsButtonCloseMap.Image = global::GridMapper.Properties.Resources.im_exit;
             this.tsButtonCloseMap.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonCloseMap.Name = "tsButtonCloseMap";
-            this.tsButtonCloseMap.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonCloseMap.Size = new System.Drawing.Size(29, 25);
             this.tsButtonCloseMap.Text = "Exit";
             // 
             // MainForm

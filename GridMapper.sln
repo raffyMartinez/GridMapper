@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridMapper", "GridMapper.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owf.Controls.Office2007ColorPicker", "..\..\Owf.Controls.Office2007ColorPicker\Owf.Controls.Office2007ColorPicker.csproj", "{F017C4CB-751D-4F5D-8A72-96A279135473}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup Gridmapper", "..\Setup Gridmapper\Setup Gridmapper.vdproj", "{AB88B90C-675D-4743-AB64-A3072F9E053A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +19,13 @@ Global
 		{39DAF75C-32B7-435B-ADC9-0F7413624593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39DAF75C-32B7-435B-ADC9-0F7413624593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39DAF75C-32B7-435B-ADC9-0F7413624593}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F017C4CB-751D-4F5D-8A72-96A279135473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F017C4CB-751D-4F5D-8A72-96A279135473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F017C4CB-751D-4F5D-8A72-96A279135473}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{F017C4CB-751D-4F5D-8A72-96A279135473}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{F017C4CB-751D-4F5D-8A72-96A279135473}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F017C4CB-751D-4F5D-8A72-96A279135473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB88B90C-675D-4743-AB64-A3072F9E053A}.Debug|Any CPU.ActiveCfg = Release
+		{AB88B90C-675D-4743-AB64-A3072F9E053A}.Debug|Any CPU.Build.0 = Release
+		{AB88B90C-675D-4743-AB64-A3072F9E053A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
