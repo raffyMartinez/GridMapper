@@ -20,6 +20,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Runtime.InteropServices;
 
 using System.Xml;
 namespace GridMapper.entities
@@ -58,6 +59,10 @@ namespace GridMapper.entities
             get { return _isMapComponentRegistered; }
         }
 
+        public static string FrameWorkDescription()
+        {
+            return RuntimeInformation.FrameworkDescription;
+        }
         public static MainForm MainForm { get; set; }
         public static bool HasInternet { get; private set; }
         public static bool HasInternetConnection()
@@ -200,7 +205,7 @@ namespace GridMapper.entities
         {
             try
             {
-                var key = Registry.ClassesRoot.OpenSubKey("MapWinGIS.Shapefile");
+                var key = Registry.ClassesRoot.OpenSubKey("MapWinGIS.Shapefile1");
                 if (key == null)
                 {
                     _isMapComponentRegistered = false;

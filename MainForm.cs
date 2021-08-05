@@ -89,12 +89,7 @@ namespace GridMapper
 
                 chkIncludeCredits.Checked = true;
             }
-            else
-            {
-                MessageBox.Show("Mapwindows mapping component is not installed\r\n" +
-                                 "You will not be able to use the map", "Mapping component is not installed",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
 
         }
         private void SetPanel1Visibility(bool visible = true)

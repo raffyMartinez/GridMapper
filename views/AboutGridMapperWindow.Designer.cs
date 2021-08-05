@@ -30,21 +30,20 @@ namespace GridMapper.views
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutGridMapperWindow));
-            this.labelMapNotInstalled = new System.Windows.Forms.Label();
+            this.labelInfo = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // labelMapNotInstalled
+            // labelInfo
             // 
-            this.labelMapNotInstalled.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMapNotInstalled.ForeColor = System.Drawing.Color.Red;
-            this.labelMapNotInstalled.Location = new System.Drawing.Point(0, 191);
-            this.labelMapNotInstalled.Name = "labelMapNotInstalled";
-            this.labelMapNotInstalled.Size = new System.Drawing.Size(826, 54);
-            this.labelMapNotInstalled.TabIndex = 0;
-            this.labelMapNotInstalled.Text = "Map control is  not installed. Please install MapWinGIS mapping control";
-            this.labelMapNotInstalled.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelMapNotInstalled.Visible = false;
+            this.labelInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfo.ForeColor = System.Drawing.Color.Red;
+            this.labelInfo.Location = new System.Drawing.Point(0, 191);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(826, 54);
+            this.labelInfo.TabIndex = 0;
+            this.labelInfo.Text = "Map control is  not installed. Please install MapWinGIS mapping control";
+            this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonClose
             // 
@@ -66,7 +65,7 @@ namespace GridMapper.views
             this.ClientSize = new System.Drawing.Size(826, 305);
             this.ControlBox = false;
             this.Controls.Add(this.buttonClose);
-            this.Controls.Add(this.labelMapNotInstalled);
+            this.Controls.Add(this.labelInfo);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AboutGridMapperWindow";
@@ -80,7 +79,7 @@ namespace GridMapper.views
 
         #endregion
 
-        private System.Windows.Forms.Label labelMapNotInstalled;
+        private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.Button buttonClose;
     }
 }
