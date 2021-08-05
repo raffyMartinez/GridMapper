@@ -14,11 +14,14 @@ namespace GridMapper.views
 {
     public partial class AboutGridMapperWindow : Form
     {
+        private bool _withVersion;
 
-        public AboutGridMapperWindow()
+        public AboutGridMapperWindow(bool withVersion =false)
         {
             InitializeComponent();
+            _withVersion = withVersion;
             Load += AboutGridMapperWindow_Load;
+
         }
 
         private void AboutGridMapperWindow_Load(object sender, EventArgs e)
@@ -36,13 +39,26 @@ namespace GridMapper.views
                 labelInfo.Text = $"{global.FrameWorkDescription()}";                
                 labelInfo.Font = new Font(labelInfo.Font.FontFamily, 8);
                 labelInfo.ForeColor = Color.Black;
+
+                if(_withVersion)
+                {
+                    labelInfo.Text += $"\r\n AxMap version: {global.MainForm.MapControl.VersionNumber}";
+                    buttonClose.Visible = true;
+                }
             }
 
         }
         
         private void OnButtonClick(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (_withVersion)
+            {
+                Close();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

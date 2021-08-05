@@ -314,6 +314,10 @@ namespace GridMapper
         {
             switch (e.ClickedItem.Name)
             {
+                case "tsButtonAbout":
+                    AboutGridMapperWindow abw = new AboutGridMapperWindow(true);
+                    abw.ShowDialog(this);
+                    break;
                 case "tsButtonFitMap":
                     Grid25MajorGrid.FitGridToMap();
                     break;

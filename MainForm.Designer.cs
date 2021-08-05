@@ -117,6 +117,8 @@ namespace GridMapper
             this.tsButtonSaveImage1 = new System.Windows.Forms.ToolStripButton();
             this.tsCBO = new System.Windows.Forms.ToolStripComboBox();
             this.tsButtonCloseMap = new System.Windows.Forms.ToolStripButton();
+            this.tsButtonAbout = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.splitter)).BeginInit();
             this.splitter.Panel1.SuspendLayout();
             this.splitter.Panel2.SuspendLayout();
@@ -718,7 +720,7 @@ namespace GridMapper
             this.tsButtonXY});
             this.toolStripGridUI.Location = new System.Drawing.Point(0, 0);
             this.toolStripGridUI.Name = "toolStripGridUI";
-            this.toolStripGridUI.Size = new System.Drawing.Size(476, 27);
+            this.toolStripGridUI.Size = new System.Drawing.Size(476, 31);
             this.toolStripGridUI.SuppressHighlighting = true;
             this.toolStripGridUI.TabIndex = 18;
             this.toolStripGridUI.Text = "toolStripEx2";
@@ -730,7 +732,7 @@ namespace GridMapper
             this.tsButtonFitMap.Image = global::GridMapper.Properties.Resources.fit;
             this.tsButtonFitMap.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonFitMap.Name = "tsButtonFitMap";
-            this.tsButtonFitMap.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonFitMap.Size = new System.Drawing.Size(29, 28);
             this.tsButtonFitMap.Text = "Fit grid to map";
             // 
             // tsButtonSaveShapefile
@@ -739,7 +741,7 @@ namespace GridMapper
             this.tsButtonSaveShapefile.Image = global::GridMapper.Properties.Resources.document_save;
             this.tsButtonSaveShapefile.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonSaveShapefile.Name = "tsButtonSaveShapefile";
-            this.tsButtonSaveShapefile.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonSaveShapefile.Size = new System.Drawing.Size(29, 28);
             this.tsButtonSaveShapefile.Text = "Save grid to shapefile";
             // 
             // tsButtonSaveImage
@@ -748,7 +750,7 @@ namespace GridMapper
             this.tsButtonSaveImage.Image = global::GridMapper.Properties.Resources.image;
             this.tsButtonSaveImage.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonSaveImage.Name = "tsButtonSaveImage";
-            this.tsButtonSaveImage.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonSaveImage.Size = new System.Drawing.Size(29, 28);
             this.tsButtonSaveImage.Text = "Save grid to image";
             // 
             // tsButtonMBRs
@@ -757,7 +759,7 @@ namespace GridMapper
             this.tsButtonMBRs.Image = global::GridMapper.Properties.Resources.mbr;
             this.tsButtonMBRs.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonMBRs.Name = "tsButtonMBRs";
-            this.tsButtonMBRs.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonMBRs.Size = new System.Drawing.Size(29, 28);
             this.tsButtonMBRs.Text = "Show MBRs";
             // 
             // tsButtonRetrieve
@@ -766,7 +768,7 @@ namespace GridMapper
             this.tsButtonRetrieve.Image = global::GridMapper.Properties.Resources.im_boundary;
             this.tsButtonRetrieve.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonRetrieve.Name = "tsButtonRetrieve";
-            this.tsButtonRetrieve.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonRetrieve.Size = new System.Drawing.Size(29, 28);
             this.tsButtonRetrieve.Text = "Get grid boundaries";
             // 
             // tsButtonXY
@@ -775,7 +777,7 @@ namespace GridMapper
             this.tsButtonXY.Image = global::GridMapper.Properties.Resources.xy_point;
             this.tsButtonXY.ImageTransparentColor = System.Drawing.Color.White;
             this.tsButtonXY.Name = "tsButtonXY";
-            this.tsButtonXY.Size = new System.Drawing.Size(29, 24);
+            this.tsButtonXY.Size = new System.Drawing.Size(29, 28);
             this.tsButtonXY.Text = "Capture pointer x,y";
             // 
             // toolStripMain
@@ -801,10 +803,12 @@ namespace GridMapper
             this.tsButtonGraticule,
             this.tsButtonSaveImage1,
             this.tsCBO,
+            this.toolStripSeparator1,
+            this.tsButtonAbout,
             this.tsButtonCloseMap});
             this.toolStripMain.Location = new System.Drawing.Point(0, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(791, 28);
+            this.toolStripMain.Size = new System.Drawing.Size(791, 31);
             this.toolStripMain.SuppressHighlighting = true;
             this.toolStripMain.TabIndex = 1;
             this.toolStripMain.Text = "toolStripEx1";
@@ -1021,6 +1025,20 @@ namespace GridMapper
             this.tsButtonCloseMap.Size = new System.Drawing.Size(29, 25);
             this.tsButtonCloseMap.Text = "Exit";
             // 
+            // tsButtonAbout
+            // 
+            this.tsButtonAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsButtonAbout.Image = global::GridMapper.Properties.Resources.help_browser;
+            this.tsButtonAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsButtonAbout.Name = "tsButtonAbout";
+            this.tsButtonAbout.Size = new System.Drawing.Size(29, 28);
+            this.tsButtonAbout.Text = "About this application";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1141,6 +1159,8 @@ namespace GridMapper
         private System.Windows.Forms.ToolStripDropDownButton tsButtonSaveState;
         private System.Windows.Forms.ToolStripMenuItem resetMapStateMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveMapStateMenuItem;
+        private System.Windows.Forms.ToolStripButton tsButtonAbout;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
