@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GridMapper.entities;
 
 namespace GridMapper.views
 {
@@ -17,12 +18,20 @@ namespace GridMapper.views
         {
             InitializeComponent();
             Load += AboutGridMapperWindow_Load;
-         }
+        }
 
         private void AboutGridMapperWindow_Load(object sender, EventArgs e)
         {
             //this.BackgroundImage = new Bitmap($@"{AppDomain.CurrentDomain.BaseDirectory}/splash-01.jpg");
-            this.Refresh();
+
+            labelMapNotInstalled.Visible = !global.IsMapComponentRegistered;
+            buttonClose.Visible = labelMapNotInstalled.Visible;
+
+        }
+
+        private void OnButtonClick(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

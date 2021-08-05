@@ -65,25 +65,37 @@ namespace GridMapper
         private void OnFormLoad(object sender, EventArgs e)
         {
             SetPanel1Visibility(false);
-            buttonSubGrid.Enabled = false;
-            Text = "FAD Grid Mapper v1";
-            SetCursor(tkCursorMode.cmSelection);
-            mapControl.Visible = false;
-            GlobalSettings gs = new GlobalSettings();
-            gs.LocalizedString[tkLocalizedStrings.lsMeters] = "m";
-            //gs.set_LocalizedString(tkLocalizedStrings.lsKilometers) = "км";
-            splitter.SplitterDistance = 300;
-            MapControl = mapControl;
-            MappingMode = fad3MappingMode.grid25Mode;
-            global.MainForm = this;
-            tsCBO.SelectedIndex = 0;
-            mapControl.TileProvider = tkTileProvider.ProviderNone;
-            //SetupGridElementUI();
-            mapControl.Visible = true;
-            mapControl.Dock = DockStyle.Fill;
+            splitter.Visible = false;
+            if (global.IsMapComponentRegistered)
+            {
+                splitter.Visible = true;
+                buttonSubGrid.Enabled = false;
+                Text = "FAD Grid Mapper v1";
+                SetCursor(tkCursorMode.cmSelection);
+                mapControl.Visible = false;
+                GlobalSettings gs = new GlobalSettings();
+                gs.LocalizedString[tkLocalizedStrings.lsMeters] = "m";
+                //gs.set_LocalizedString(tkLocalizedStrings.lsKilometers) = "км";
+                splitter.SplitterDistance = 300;
+                MapControl = mapControl;
+                MappingMode = fad3MappingMode.grid25Mode;
+                global.MainForm = this;
+                tsCBO.SelectedIndex = 0;
+                mapControl.TileProvider = tkTileProvider.ProviderNone;
+                //SetupGridElementUI();
+                mapControl.Visible = true;
+                mapControl.Dock = DockStyle.Fill;
 
 
-            chkIncludeCredits.Checked = true;
+                chkIncludeCredits.Checked = true;
+            }
+            else
+            {
+                MessageBox.Show("Mapwindows mapping component is not installed\r\n" +
+                                 "You will not be able to use the map", "Mapping component is not installed",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
         private void SetPanel1Visibility(bool visible = true)
         {
