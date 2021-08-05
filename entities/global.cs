@@ -200,7 +200,7 @@ namespace GridMapper.entities
         {
             try
             {
-                var key = Registry.ClassesRoot.OpenSubKey("MapWinGIS.Shapefile1");
+                var key = Registry.ClassesRoot.OpenSubKey("MapWinGIS.Shapefile");
                 if (key == null)
                 {
                     _isMapComponentRegistered = false;
