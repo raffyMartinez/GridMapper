@@ -232,6 +232,12 @@ namespace GridMapper.entities
         /// <param name="layerType"></param>
         public void LayerSymbol(int layerHandle, System.Windows.Forms.PictureBox pic, string layerType, ShapeDrawingOptions drawingOptions = null)
         {
+
+            if (global.OS_Name.Contains("Windows 7"))
+            {
+                return;
+            }
+
             bool isCategory = drawingOptions != null;
             if (pic.Image != null) pic.Image.Dispose();
             Rectangle rect = pic.ClientRectangle;
@@ -248,6 +254,7 @@ namespace GridMapper.entities
             switch (layerType)
             {
                 case "ShapefileClass":
+
                     ((Shapefile)ly).With(shp =>
                     {
                         ShapeDrawingOptions sdo = shp.DefaultDrawingOptions;
@@ -271,7 +278,18 @@ namespace GridMapper.entities
                                 break;
 
                             case ShpfileType.SHP_POLYGON:
-                                sdo.DrawRectangle(ptr, rect.Width / 3, rect.Height / 4, w, h, shp.DefaultDrawingOptions.LineVisible, rect.Width, rect.Height);
+
+                                try
+                                {
+
+                                    sdo.DrawRectangle(ptr, rect.Width / 3, rect.Height / 4, w, h, shp.DefaultDrawingOptions.LineVisible, rect.Width, rect.Height);
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Logger.Log(ex);
+                                }
+
                                 break;
 
                             case ShpfileType.SHP_POLYLINE:
@@ -279,9 +297,13 @@ namespace GridMapper.entities
                                 break;
                         }
 
+
+
                         g.ReleaseHdc(ptr);
                         pic.Image = bmp;
                     });
+
+
 
                     break;
 
@@ -307,9 +329,10 @@ namespace GridMapper.entities
                     }
                     break;
             }
+
         }
 
-        public void VisibilityExpressionForCategory(string expression,VisibilityExpressionTarget expressiontarget)
+        public void VisibilityExpressionForCategory(string expression, VisibilityExpressionTarget expressiontarget)
         {
             VisibilityExpressionText = expression;
         }
@@ -575,7 +598,7 @@ namespace GridMapper.entities
             {
                 handles.Add(item.Key);
             }
-            foreach(var h in handles)
+            foreach (var h in handles)
             {
                 RemoveLayer(h);
                 _mapLayerDictionary.Remove(h);

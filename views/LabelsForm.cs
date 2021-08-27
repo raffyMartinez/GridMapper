@@ -295,6 +295,9 @@ namespace GridMapper.views
                 chkOutlineVisible.Checked = _shapeFile.Labels.FontOutlineVisible;
                 rectFontColor.FillColor = FADColors.UintToColor(_shapeFile.Labels.FontColor);
                 rectOutlineColor.FillColor = FADColors.UintToColor(_shapeFile.Labels.FontOutlineColor);
+
+                chkScaleLabels.Checked = _shapeFile.Labels.ScaleLabels;
+
                 switch (_shapeFile.Labels.Alignment)
                 {
                     case tkLabelAlignment.laTopLeft:
@@ -534,6 +537,8 @@ namespace GridMapper.views
                         _shapeFile.Labels.ShadowOffsetX = int.Parse(txtShadowOffsetX.Text);
                         _shapeFile.Labels.ShadowOffsetY = int.Parse(txtShadowOffsetY.Text);
 
+                        _shapeFile.Labels.ScaleLabels = chkScaleLabels.Checked;
+
                         if (_mapLayer.LabelsVisibilityExpression?.Length > 0)
                         {
                             _shapeFile.Labels.VisibilityExpression = _mapLayer.LabelsVisibilityExpression;
@@ -599,6 +604,8 @@ namespace GridMapper.views
                         LabelCategory.FrameOutlineColor = FADColors.ColorToUInteger(rectFrameLineColor.FillColor);
                         LabelCategory.FramePaddingX = int.Parse(txtFramePaddingX.Text);
                         LabelCategory.FramePaddingY = int.Parse(txtFramePaddingY.Text);
+
+                       
 
                         if (optionFrameTL.Checked)
                             LabelCategory.InboxAlignment = tkLabelAlignment.laTopLeft;

@@ -126,7 +126,7 @@ namespace GridMapper.views
                             }
                             else
                             {
-                                lvi = listViewCategories.SelectedItems[1];
+                                lvi = listViewCategories.SelectedItems[0];
                             }
                             lvi.Text = s;
                             buttonFormat.Enabled = lvi.Text.Length > 0;

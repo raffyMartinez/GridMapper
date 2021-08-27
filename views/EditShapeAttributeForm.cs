@@ -335,7 +335,7 @@ namespace GridMapper.views
         {
             if (_sfSelectedCount != 1)
             {
-                if (gridAttributes.Rows[e.RowIndex].Tag != null)
+                if (e.RowIndex > -1 &&  gridAttributes.Rows[e.RowIndex].Tag != null)
                 {
                     MapInterActionHandler.SelectedShapeIndex = (int)gridAttributes.Rows[e.RowIndex].Tag;
                 }

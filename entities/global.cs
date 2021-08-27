@@ -23,6 +23,8 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 
 using System.Xml;
+using System.Management;
+
 namespace GridMapper.entities
 {
     /// <summary>
@@ -57,6 +59,16 @@ namespace GridMapper.entities
         public static bool IsMapComponentRegistered
         {
             get { return _isMapComponentRegistered; }
+        }
+
+        public static string OS_Name
+        {
+            get
+            {
+                return (string)(from x in new ManagementObjectSearcher(
+              "SELECT Caption FROM Win32_OperatingSystem").Get().Cast<ManagementObject>()
+                                select x.GetPropertyValue("Caption")).FirstOrDefault();
+            }
         }
 
         public static string FrameWorkDescription()

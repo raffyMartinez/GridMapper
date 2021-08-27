@@ -153,7 +153,7 @@ namespace GridMapper.views
                             if (result == DialogResult.OK && fbd.SelectedPath.Length > 0)
                             {
                                 SetSavedMapsFolder(fbd.SelectedPath);
-                                if (!_parentForm.Grid25MajorGrid.Save($@"{fbd.SelectedPath}\{txtSave.Text}"))
+                                if (!_parentForm.Grid25MajorGrid.Save($@"{fbd.SelectedPath}\{txtSave.Text}",true))
                                 {
                                     Logger.Log("Not all grid25 shapefiles were saved.", "Grid25SaveForm", "OnButton_Click");
                                 }

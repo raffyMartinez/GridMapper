@@ -212,19 +212,25 @@ namespace GridMapper.views
         {
             if (e.ShowInLayerUI)
             {
-                //set the layer preview thumbnail
-                PictureBox pic = new PictureBox
+                try
                 {
-                    Height = layerGrid.RowTemplate.Height,
-                    Width = layerGrid.Columns[2].Width,
-                    Visible = false
-                };
-                _mapLayersHandler.LayerSymbol(e.LayerHandle, pic, e.LayerType);
-
-                if (!_mapLayersHandler[e.LayerHandle].IsMaskLayer)
-                {
-                    layerGrid.Invoke((MethodInvoker)delegate
+                    //set the layer preview thumbnail
+                    PictureBox pic = new PictureBox
                     {
+                        Height = layerGrid.RowTemplate.Height,
+                        Width = layerGrid.Columns[2].Width,
+                        Visible = false
+                    };
+
+
+                    _mapLayersHandler.LayerSymbol(e.LayerHandle, pic, e.LayerType);
+
+
+
+                    if (!_mapLayersHandler[e.LayerHandle].IsMaskLayer)
+                    {
+                        layerGrid.Invoke((MethodInvoker)delegate
+                        {
                         //we always insert a new layer in the first row of the dataGrid
                         layerGrid.Rows.Insert(0, new object[] { e.LayerVisible, e.LayerName, pic.Image });
 
@@ -233,7 +239,12 @@ namespace GridMapper.views
 
                         //symbolize the current layer by making it bold font
                         MarkCurrentLayerName(CurrentLayerRow());
-                    });
+                        });
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Logger.Log(ex);
                 }
             }
         }

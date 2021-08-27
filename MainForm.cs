@@ -13,6 +13,7 @@ using GridMapper.views;
 using AxMapWinGIS;
 using System.IO;
 using Microsoft.VisualBasic.PowerPacks;
+using System.Diagnostics;
 
 namespace GridMapper
 {
@@ -834,6 +835,7 @@ namespace GridMapper
                 SetPanel1Visibility(true);
                 SetCursor(tkCursorMode.cmSelection);
             }
+            MapControl.Focus();
         }
 
         private void OnMenuItemSelected(object sender, EventArgs e)

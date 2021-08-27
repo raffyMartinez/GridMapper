@@ -808,7 +808,7 @@ namespace GridMapper
             this.tsButtonCloseMap});
             this.toolStripMain.Location = new System.Drawing.Point(0, 0);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(791, 31);
+            this.toolStripMain.Size = new System.Drawing.Size(791, 28);
             this.toolStripMain.SuppressHighlighting = true;
             this.toolStripMain.TabIndex = 1;
             this.toolStripMain.Text = "toolStripEx1";

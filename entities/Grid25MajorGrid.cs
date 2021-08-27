@@ -365,7 +365,7 @@ namespace GridMapper.entities
         /// This is the name we provided in a dialog box
         /// </param>
         /// <returns></returns>
-        public bool Save(string baseFileName)
+        public bool Save(string baseFileName, bool includeMask = false)
         {
             var saveCount = 0;
             var fileName = "";
@@ -409,12 +409,57 @@ namespace GridMapper.entities
                     }
                 }
             }
+
             if (saveCount == 4)
             {
                 //save metadata file for the fishing grid
+                if (includeMask)
+                {
+                    fileName = $"{baseFileName}_mask";
+                    var sf = GetMask();
+                    int hmaskLayer = MaplayersHandler.AddLayer(sf, "Mask", false, mappingMode: fad3MappingMode.grid25Mode);
+                    if (hmaskLayer > -1 && MaplayersHandler[hmaskLayer].Save(fileName))
+                    {
+                        _listGridLayers.Add(hmaskLayer);
+                        saveCount++;
+                    }
+
+                    //sf.EditCellValue(sf.FieldIndexByName["Name"], 0, Path.GetFileName(baseFileName));
+                }
                 Serialize(baseFileName);
             }
-            return saveCount == 4;
+            return saveCount >= 4;
+        }
+
+        private Shapefile GetMask()
+        {
+            var sf = new Shapefile();
+            if (sf.CreateNew("", ShpfileType.SHP_POLYGON))
+            {
+                sf.EditAddField("ID", FieldType.INTEGER_FIELD, 1, 1);
+                var ext = _axMap.Extents;
+
+                //ef is expansion factor
+                var ef = (ext.xMax - ext.xMin) * 0.01;
+                //var ef = (ext.xMax - ext.xMin) * 0.0005;
+
+                ext.SetBounds(ext.xMin - ef, ext.yMin - ef, 0, ext.xMax + ef, ext.yMax + ef, 0);
+
+                //var hGridBoundary = grid
+                var sfMask = _axMap.get_Shapefile(MaplayersHandler.LayerDictionary.Values.FirstOrDefault(t => t.Name == "MBR").Handle);
+                sf.GeoProjection = _axMap.GeoProjection;
+                var shp = ext.ToShape().Clip(_axMap.get_Shapefile(MaplayersHandler.LayerDictionary.Values.FirstOrDefault(t => t.Name == "MBR").Handle).Extents.ToShape(), tkClipOperation.clDifference);
+                var h = sf.EditAddShape(shp);
+                if (h > -1 && sf.EditCellValue(sf.FieldIndexByName["ID"], h, 1))
+                {
+                    sf.DefaultDrawingOptions.LineVisible = false;
+                    sf.DefaultDrawingOptions.FillColor = new Utils().ColorByName(tkMapColor.White);
+                    return sf;
+                }
+
+            }
+
+            return null;
         }
 
         private void Serialize(string fileName)
@@ -579,11 +624,11 @@ namespace GridMapper.entities
         public void FitGridToMap(int WidthToFit = 0, int HeightToFit = 0)
         {
             int labelDistance = (int)_gridAndLabelProperties["minorGridLabelDistance"];
-            if(Grid25LabelManager!=null && Grid25LabelManager.Grid25Labels.NumShapes>0)
+            if (Grid25LabelManager != null && Grid25LabelManager.Grid25Labels.NumShapes > 0)
             {
                 var e = Grid25LabelManager.Grid25Labels.Extents;
                 var ext = new Extents();
-                if(WidthToFit>0 && HeightToFit>0)
+                if (WidthToFit > 0 && HeightToFit > 0)
                 {
                     int centroidX = (int)e.Center.x;
                     int centroidY = (int)e.Center.y;
@@ -595,7 +640,7 @@ namespace GridMapper.entities
                 }
                 else
                 {
-                    ext.SetBounds(e.xMin-1500, e.yMin-4000, 0, e.xMax+1500, e.yMax+3000, 0); ;
+                    ext.SetBounds(e.xMin - 1500, e.yMin - 4000, 0, e.xMax + 1500, e.yMax + 3000, 0); ;
                 }
                 _axMap.Extents = ext;
 
@@ -622,14 +667,14 @@ namespace GridMapper.entities
                         int xMax = centroidX + (WidthToFit / 2);
                         int yMin = centroidY - (HeightToFit / 2);
                         int yMax = centroidY + (HeightToFit / 2);
-                        ext.SetBounds(xMin - (labelDistance * SIZING_FACTOR) - XBUFFER, yMin - (labelDistance * SIZING_FACTOR) - YBOTTOMBUFFER, 0, xMax + (labelDistance * SIZING_FACTOR) + XBUFFER, yMax + (labelDistance + (1000* SIZING_FACTOR)) + YTOPBUFFER, 0);
+                        ext.SetBounds(xMin - (labelDistance * SIZING_FACTOR) - XBUFFER, yMin - (labelDistance * SIZING_FACTOR) - YBOTTOMBUFFER, 0, xMax + (labelDistance * SIZING_FACTOR) + XBUFFER, yMax + (labelDistance + (1000 * SIZING_FACTOR)) + YTOPBUFFER, 0);
                     }
                     else
                     {
 
                         //ext.SetBounds(e.xMin - (labelDistance * SIZING_FACTOR) - XBUFFER, e.yMin - (labelDistance * SIZING_FACTOR) - YBOTTOMBUFFER, 0, e.xMax + (labelDistance * SIZING_FACTOR) + XBUFFER, e.yMax + (labelDistance * SIZING_FACTOR) + YTOPBUFFER, 0);
                         //ext.SetBounds(e.xMin -labelDistance,  e.yMin - (labelDistance * SIZING_FACTOR * 6) - YBOTTOMBUFFER, 0, e.xMax + labelDistance, e.yMax + (labelDistance * SIZING_FACTOR),  0);
-                        
+
                         ext.SetBounds(e.xMin - (labelDistance * SIZING_FACTOR) - XBUFFER, e.yMin - (labelDistance * SIZING_FACTOR) - YBOTTOMBUFFER, 0, e.xMax + (labelDistance * SIZING_FACTOR) + XBUFFER, e.yMax + (labelDistance * SIZING_FACTOR) + YTOPBUFFER, 0);
 
 
@@ -639,7 +684,7 @@ namespace GridMapper.entities
                     _axMap.Extents = ext;
                 });
 
-                  
+
             }
         }
 
@@ -1283,7 +1328,7 @@ namespace GridMapper.entities
         {
             MapTitle = mapTitle;
             //_grid25LabelManager.TitleDistanceFactor = titleDistanceFactor;
-            _grid25LabelManager.LabelGrid(_shapeFileSelectedMajorGridBuffer, gridAndLabelProperties, MapTitle,titleDistanceFactor);
+            _grid25LabelManager.LabelGrid(_shapeFileSelectedMajorGridBuffer, gridAndLabelProperties, MapTitle, titleDistanceFactor);
             _grid25LabelManager.AddMajorGridLabels(_listIntersectedMajorGrids);
             _grid25LabelManager.Grid25Labels.Labels.ApplyCategories();
             _axMap.Redraw();
@@ -1447,7 +1492,7 @@ namespace GridMapper.entities
         }
 
         public double TitleDistanceFactor { get; set; }
-        
+
 
         public bool GenerateMinorGridInsideExtent(Extents definitionExtent, string mapTitle = "")
         {
@@ -1479,7 +1524,7 @@ namespace GridMapper.entities
                     {
                         _grid25LabelManager = new Grid25LabelManager(_axMap.GeoProjection);
 
-                        if (_grid25LabelManager.LabelGrid(_shapeFileSelectedMajorGridBuffer, _gridAndLabelProperties, MapTitle,TitleDistanceFactor))
+                        if (_grid25LabelManager.LabelGrid(_shapeFileSelectedMajorGridBuffer, _gridAndLabelProperties, MapTitle, TitleDistanceFactor))
                         {
                             _grid25LabelManager.AddMajorGridLabels(_listIntersectedMajorGrids);
                             _grid25LabelManager.Grid25Labels.Labels.ApplyCategories();
@@ -1673,7 +1718,7 @@ namespace GridMapper.entities
             }
         }
 
-        
+
 
         public void SetExtentFromLayout()
         {
@@ -1725,7 +1770,7 @@ namespace GridMapper.entities
         private void SelectGrids(Extents ext, bool SelectionFromSelectBox = false, bool CreateSelectionInMajorGrid = false)
         {
             //gridIsCLoned = false;
-            if(_shapefileMajorGrid.NumShapes==0)
+            if (_shapefileMajorGrid.NumShapes == 0)
             {
                 _gridMajorGridCopy.SelectAll();
                 _shapefileMajorGrid = _gridMajorGridCopy.ExportSelection();
