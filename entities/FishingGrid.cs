@@ -553,7 +553,8 @@ namespace GridMapper.entities
                     //_grid25.MajorGridYOrigin = 800000;
                     _grid25.MajorGridYOrigin = 400000;
                     _grid25.MajorGridColumns = 15;
-                    _grid25.MaxGridNumber = 315;
+                    //_grid25.MaxGridNumber = 315;
+                    _grid25.MaxGridNumber = 600;
                     break;
 
                 case fadUTMZone.utmZone51N:

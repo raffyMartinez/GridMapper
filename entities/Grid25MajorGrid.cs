@@ -1122,7 +1122,8 @@ namespace GridMapper.entities
                         //yOrigin = 800000;
                         yOrigin = 400000;
                         cols = 15;
-                        rows = 21;
+                        //rows = 21;
+                        rows = 40;
                         offsetColumns = 0;
                         gridNumber = 1;
                         break;
